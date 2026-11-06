@@ -1,0 +1,8 @@
+
+# Secretos: JAMAS al repositorio
+secrets.json
+*.env
+.env*
+*.jks
+*.keystore
+key.properties

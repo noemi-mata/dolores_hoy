@@ -9,7 +9,8 @@ import 'presentacion/tablero_viewmodel.dart';
 
 void main() {
   // Composition root: aquí se arma todo.
-  final cliente = ClienteSeguro(http.Client());
+  // 20 s de espera: en el emulador 8 s se quedaba corto y salía "No hay conexión".
+  final cliente = ClienteSeguro(http.Client(), espera: const Duration(seconds: 20));
   final claves = ConfigClaves.desdeEntorno();
   final vm = TableroViewModel(
     clima: ServicioClima(cliente),

@@ -55,7 +55,11 @@ class ClienteSeguro {
     final params = uri.queryParameters.map(
       (k, v) => MapEntry(k, secretos.contains(k.toLowerCase()) ? '***' : v),
     );
-    return uri.replace(queryParameters: params.isEmpty ? null : params).toString();
+    // Uri codifica "*" como "%2A"; lo regresamos a "***" para que se lea claro.
+    return uri
+        .replace(queryParameters: params.isEmpty ? null : params)
+        .toString()
+        .replaceAll('%2A%2A%2A', '***');
   }
 }
 
